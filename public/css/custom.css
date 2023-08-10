@@ -1,3 +1,11 @@
+/* #fbf805 */
+:root {
+    --main-color: #2596be;
+    --second-color: #76b5c5;
+    --third-color:#063970;
+    --font-main-color: #fff;
+  }
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -7,4 +15,95 @@
 }
 #kt_content{
     padding-top:0px;
+}
+#loading_barangay, #loading_city_municipality {
+    display: none;
+}
+.login-flex-column-1 {
+    color:var(--font-main-color);
+}
+/* Custom Theme Color */
+.link-primary {
+    color:var(--second-color);
+}
+.btn-check:active+.btn.btn-primary, .btn-check:checked+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.show, .btn.btn-primary:active:not(.btn-active), .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .show>.btn.btn-primary {
+    color: var(--font-main-color);
+    border-color: var(--main-color);
+    background-color: var(--second-color);
+}
+.btn.btn-primary {
+    color: var(--font-main-color);
+    border-color: var(--main-color);
+    background-color: var(--second-color);
+}
+
+.btn-check:active+.btn.btn-primary, .btn-check:checked+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.show, .btn.btn-primary:active:not(.btn-active), .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .show>.btn.btn-primary {
+    color: var(--font-main-color);
+    border-color: var(--second-color);
+    background-color: var(--main-color) !important;
+}
+
+.aside .aside-menu {
+    background: var(--main-color);
+}
+.aside-dark .menu .menu-item .menu-link .menu-title {
+    color: var(--font-main-color);
+}
+.aside-dark .menu .menu-item .menu-link .menu-icon, .aside-dark .menu .menu-item .menu-link .menu-icon .svg-icon, .aside-dark .menu .menu-item .menu-link .menu-icon i {
+    color: var(--font-main-color);
+}
+.aside-dark .menu .menu-item .menu-link.active {
+    background-color:var(--second-color);
+    color: var(--font-main-color);
+}
+.aside-dark .menu .menu-item .menu-link.active .menu-title {
+    color: var(--font-main-color);
+}
+.aside-dark .menu .menu-item .menu-link.active .menu-icon, .aside-dark .menu .menu-item .menu-link.active .menu-icon .svg-icon, .aside-dark .menu .menu-item .menu-link.active .menu-icon i {
+    color: var(--main-color);
+}
+.aside-dark .menu .menu-item.hover:not(.here)>.menu-link:not(.disabled):not(.active):not(.here), .aside-dark .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    background-color:var(--second-color);
+    color:var(--font-main-color);
+}
+
+.aside-dark .menu .menu-item.hover:not(.here)>.menu-link:not(.disabled):not(.active):not(.here) .menu-icon, .aside-dark .menu .menu-item.hover:not(.here)>.menu-link:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon, .aside-dark .menu .menu-item.hover:not(.here)>.menu-link:not(.disabled):not(.active):not(.here) .menu-icon i, .aside-dark .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon, .aside-dark .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon, .aside-dark .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon i {
+    color: var(--main-color);
+}
+.aside-footer {
+    background: var(--main-color);
+}
+
+.aside.aside-dark .btn-custom {
+    color: var(--font-main-color);
+    background-color: rgba(63,66,84,.50);
+}
+.login-left-side-bg{
+    background: var(--main-color);
+}
+
+
+.aside.aside-dark .aside-logo {
+    background-color:var(--main-color);
+    justify-content: center;
+}
+.aside.aside-dark .btn-custom.active, .aside.aside-dark .btn-custom.show, .aside.aside-dark .btn-custom:active:not(.btn-active), .aside.aside-dark .btn-custom:focus:not(.btn-active), .aside.aside-dark .btn-custom:hover:not(.btn-active), .btn-check:active+.aside.aside-dark .btn-custom, .btn-check:checked+.aside.aside-dark .btn-custom, .show>.aside.aside-dark .btn-custom {
+    color: #fff;
+    background-color: rgba(63,66,84,.35)!important;
+}
+.product_thumb{
+    width: 50px;
+}
+a {
+    color: var(--second-color);
+}
+a:hover {
+    color: var(--third-color);
+}
+.link-primary:focus, .link-primary:hover {
+    transition: color .2s ease,background-color .2s ease;
+    color: var(--third-color);
+}
+.text-hover-primary:hover {
+    color: var(--third-color) !important;
 }

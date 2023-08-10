@@ -14,8 +14,11 @@ return [
     */
 
     'name' => env('APP_NAME', 'Base Project'),
+    'abbr' => env('APP_ABBR', 'Base Project'),
     'desc' => env('APP_DESC', 'Base project profile'),
-    'domain' => 'baseproject.com',
+    'keywords' => env('APP_KEYWORDS', 'Laravel'),
+    'logo' => env('APP_LOGO'),
+    'domain' => env('APP_DOMAIN', 'azway.ph'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +72,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Manila',
 
     /*
     |--------------------------------------------------------------------------
