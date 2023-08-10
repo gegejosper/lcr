@@ -29,7 +29,7 @@ class CounterController extends Controller
                 'success' => false,
                 'errors' => $validator->getMessageBag()->toArray()
             ), 400); // 400 being the HTTP code for an invalid request.
-            //return response()->json(['errors' => $validator->messages(), 'status' => 422], 200);
+            //test
         }
         else {
             $data = new Counter();
