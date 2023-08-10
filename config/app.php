@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Base Project'),
+    'abbr' => env('APP_ABBR', 'Base Project'),
     'desc' => env('APP_DESC', 'Base project profile'),
     'keywords' => env('APP_KEYWORDS', 'Laravel'),
     'logo' => env('APP_LOGO'),
@@ -71,7 +72,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Manila',
 
     /*
     |--------------------------------------------------------------------------
