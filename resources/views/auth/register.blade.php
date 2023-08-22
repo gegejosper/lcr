@@ -9,12 +9,13 @@
 				<img alt="Logo" src="{{asset(config('app.logo'))}}" class="h-250px" />
 			</a>
 			<!--begin::Form-->
-			<form class="form w-100" id="kt_sign_in_form" action="{{ route('login') }}" method="post">
+			<form class="form w-100" id="kt_sign_in_form" action="/client/register" method="post">
 				@csrf
 				<!--begin::Heading-->
 				<div class="text-center mb-10">
 					<!--begin::Title-->
-					<h1 class="text-dark mb-3">Register to {{config('app.name')}}</h1>
+					<h3 class="text-dark mb-3">{{config('app.name')}}</h3>
+                    <h1 class="text-dark mb-3">REGISTRATION</h1>
 					<!--end::Title-->
 				</div>
 				<!--begin::Heading-->

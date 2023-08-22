@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 Route::get('/unknown_user', 'FrontController@unknown_user');
 Route::get('/apply', 'FrontController@apply');
+Route::get('/thankyou/{client_id}', 'FrontController@thank_you');
+Route::post('/client/register', 'FrontController@register');
 Route::namespace('Panel')->prefix('panel')->name('panel.')->group(function() {
     Route::middleware('can:manage-admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/', 'AdminController@dashboard')->name('dashboard');
