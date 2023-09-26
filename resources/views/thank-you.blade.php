@@ -5,9 +5,6 @@
 	<div class="d-flex flex-center flex-column flex-column-fluid">
 		<!--begin::Wrapper-->
 		<div class="bg-body w-lg-700px p-10 p-lg-15 mx-auto d-flex flex-center flex-column">
-			<a href="/" class="mb-5 align-center">
-				<img alt="Logo" src="{{asset(config('app.logo'))}}" class="h-150px" />
-			</a>
 				<!--begin::Heading-->
 				<div class="text-center">
                     <h3 class="text-dark mb-3">{{$que->destination_detail->counter_details->counter_name}}</h3>
@@ -35,6 +32,9 @@
                                     <div class="text-gray-600">{{$que->destination_detail->destination_name}}</div>
                                     <!--begin::Details item-->
                                     <button class="btn btn-xl btn-success mt-10" id="print_button"><i class="fa fa-print"></i> Print</button>
+                                    <a href="/" class="btn btn-xl btn-primary mt-10"><i class="fa fa-reply"></i> Back</a>
+
+                                    <div id="countdown">10 seconds remaining</div>
                                 </div>
                             </div>
                         </div>
@@ -64,5 +64,24 @@
         window.print();
     });
 });
+
+function redirect_after_10_seconds() {
+    var seconds = 20;
+
+    function updateCountdown() {
+        if (seconds > 0) {
+            document.getElementById('countdown').textContent = 'Redirecting in ' seconds + ' seconds';
+            seconds--;
+            setTimeout(updateCountdown, 1000); // Update every 1 second
+        } else {
+            window.location.href = '/register'; // Redirect when the countdown is done
+        }
+    }
+
+    updateCountdown();
+}
+
+// Call the function to initiate the countdown and redirection
+redirect_after_10_seconds();
 </script>
 @endsection

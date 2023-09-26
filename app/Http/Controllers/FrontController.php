@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Destination;
 use App\Models\Que;
+use App\Models\Counter;
+use App\Models\QueCounter;
 use Response;
 use Validator;
 use Illuminate\Http\Request;
@@ -12,6 +14,12 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     //
+    public function index(){
+        $latest_que = QueCounter::with('que_details')->where('status', 'serving')->oldest()->first();
+        $counters = Counter::with('serving_que')->where('status', 'active')->get();
+        //dd($counters);
+        return view('index', compact('counters', 'latest_que'));
+    }
     public function unknown_user(){
         return view('errors.unknown_user');
     }
@@ -58,6 +66,7 @@ class FrontController extends Controller
             $que = new Que();
             $que->destination_id = $req->destination;
             $que->customer_id = $data->id;
+            $que->counter_id = $destination->counter_id;
             $que->priority_number = $priority_number;
             $que->priority = $req->type;
             $que->que_date = $today;
@@ -66,6 +75,12 @@ class FrontController extends Controller
             return redirect('/thankyou/'.$que->id);
         }
 
+    }
+    public function view_counter($counter_id){
+        $counter = Counter::find($counter_id);
+        $serving = Que::where('counter_id', $counter_id)->with('client_detail', 'destination_detail.counter_details')->where('status', 'serving')->first();
+        $ques = Que::with('client_detail', 'destination_detail.counter_details')->where('counter_id', $counter_id)->get();
+        return view('panel.counters.counter', compact('ques', 'counter', 'serving'));
     }
 }
 

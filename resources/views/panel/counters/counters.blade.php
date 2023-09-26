@@ -48,7 +48,7 @@
                                         <tr class="row{{$counter->id}}">
                                             <th scope="row">{{$count}}</th>
                                             <td>
-                                                <a href="/panel/counters/{{$counter->id}}" id="counter_name_{{$counter->id}}" class="{{$counter->status == 'active' ? 'text-success' : 'text-warning'}}">
+                                                <a href="/counter/{{$counter->id}}" id="counter_name_{{$counter->id}}" class="{{$counter->status == 'active' ? 'text-success' : 'text-warning'}}">
                                                     {{$counter->counter_name}}  
                                                 </a> 
                                             </td>  

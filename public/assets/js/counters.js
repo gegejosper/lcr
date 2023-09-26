@@ -145,7 +145,7 @@ $(document).ready(function() {
                     </span>
                 </td>
                 <td class="action">
-                    <a href="/panel/counters/${data.id}" class="btn btn-sm btn-active-light--success">
+                    <a href="/counter/${data.id}" class="btn btn-sm btn-active-light--success">
                         <span class="svg-icon svg-icon-muted svg-icon-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="currentColor"/>

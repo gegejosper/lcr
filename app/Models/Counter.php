@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Counter extends Model
 {
     use HasFactory;
+    public function serving_que(){
+        return $this->hasMany('App\Models\Que','counter_id', 'id')->where('status', 'serving');
+    }
 }
