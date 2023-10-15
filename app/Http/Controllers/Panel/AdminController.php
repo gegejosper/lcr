@@ -6,13 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Application;
+use App\Models\Destination;
+
 use App\Models\User;
+use App\Models\Que;
 use App\Models\Role;
 use App\Models\Plan;
 use App\Models\Package;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -53,6 +57,39 @@ class AdminController extends Controller
     }
     public function reports(){
         $page_name = 'Reports';
-        return view('panel.admin.reports',compact('page_name'));
+        $destinations = Destination::get();
+        $ques = Que::with('client_detail', 'destination_detail.counter_details')
+            ->get();
+        return view('panel.admin.reports',compact('page_name', 'ques', 'destinations'));
+    }
+    public function reports_range(Request $req){
+        $from_date = null;
+        $to_date = null;
+        $destinations = Destination::get();
+        if (isset($req->from_date) && isset($req->to_date)) {
+            $from_date = Carbon::parse($req->from_date . ' 00:00:00');
+            $to_date = Carbon::parse($req->to_date . ' 23:59:59');
+        }
+
+        $page_name = 'Reports';
+        $status = $req->status == 'all' ? null : $req->status;
+        $purpose = $req->purpose == 'all' ? null : $req->purpose;
+        $priority = $req->priority == 'all' ? null : $req->priority;
+        $ques = Que::with('client_detail', 'destination_detail.counter_details')
+            ->when($priority != null, function ($query) use ($priority) {
+                return $query->where('priority', $priority);
+            })
+            ->when($status != null, function ($query) use ($status) {
+                return $query->where('status', $status);
+            })
+            ->when($purpose != null, function ($query) use ($purpose) {
+                return $query->where('destination_id', $purpose);
+            })
+            ->when($from_date && $to_date, function ($query) use ($from_date, $to_date) {
+                return $query->whereBetween('created_at', [$from_date->toDateTimeString(), $to_date->toDateTimeString()]);
+            })
+            ->get();
+
+        return view('panel.admin.reports', compact('page_name', 'ques', 'destinations'));
     }
 }

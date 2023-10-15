@@ -26,13 +26,14 @@
         <div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
             <!--begin::Menu-->
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
+                @can('manage-admin')
                 <div class="menu-item">
                     <div class="menu-content pb-2">
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Administration</span>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a href="/panel/admin"  class="menu-link {{ (request()->segment(2) == 'admin') ? 'active' : '' }}">
+                    <a href="/panel/admin"  class="menu-link {{ (request()->segment(2) == 'admin') && (request()->segment(3) == null)  ? 'active' : '' }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -107,7 +108,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a href="/panel/admin/reports" class="menu-link ">
+                    <a href="/panel/admin/reports" class="menu-link {{ (request()->segment(2) == 'admin') && (request()->segment(3) == 'reports') ? 'active' : '' }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -139,20 +140,18 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
+                        <!-- <div class="menu-item">
                             <a class="menu-link {{ (request()->segment(3) == 'settings') ? 'active' : '' }}" href="/panel/admin/settings">
                                 <span class="svg-icon menu-icon">
-                                    <!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen059.svg-->
                                     <span class="svg-icon svg-icon-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
                                     <rect y="6" width="16" height="3" rx="1.5" fill="currentColor"/>
                                     <rect opacity="0.3" y="12" width="8" height="3" rx="1.5" fill="currentColor"/>
                                     <rect opacity="0.3" width="12" height="3" rx="1.5" fill="currentColor"/>
                                     </svg></span>
-                                <!--end::Svg Icon-->
                                 </span>	
                                 <span class="menu-title">Settings</span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="menu-item">
                             <a class="menu-link {{ (request()->segment(4) == 'users') ? 'active' : '' }}" href="/panel/admin/settings/users">
                                 <span class="svg-icon menu-icon">
@@ -216,7 +215,31 @@
                         <div class="separator mx-1 my-4"></div>
                     </div>
                 </div>
-                
+                @endcan
+                @can('manage-clerk')
+                <div class="menu-item">
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Clerk</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a href="/panel/clerk"  class="menu-link {{ (request()->segment(2) == 'clerk') ? 'active' : '' }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
+                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </div>
+                @endcan
             </div>
             <!--end::Menu-->
         </div>

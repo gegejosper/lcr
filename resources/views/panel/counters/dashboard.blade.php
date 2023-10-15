@@ -10,65 +10,59 @@
         <div class="container">
             <!--begin::Row-->
                 <div class="row justify-content-center">
+                    
                     <div class="col-lg-8">
                         <!--begin::Card-->
                         <div class="card card-custom">
                             <div class="card-body"> 
                                 <!--begin: Datatable-->                             
-                                <table class="table" id="queTable">
+                                <table class="table" id="counterTable">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Priority #</th>
-                                            <th scope="col">Client</th>
-                                            <th scope="col">Destination</th>
-                                            <th scope="col">Counter</th>
-                                            <th scope="col">Priority</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
                                             <th scope="col">Status</th>
-                                            <!-- <th scope="col">Action</th> -->
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($ques as $que)
-                                        <tr class="row{{$que->id}}">
-                                            <td>{{$que->que_date}}</td>
-                                            <td>{{$que->priority_number}}</td>
-                                           
+                                        <?php 
+                                            $count = 1; 
+                                        ?>
+                                        @foreach($counters as $counter)
+                                        <tr class="row{{$counter->id}}">
+                                            <th scope="row">{{$count}}</th>
                                             <td>
-                                                <a href="/panel/clients/{{$que->client_detail->id}}" id="client_name_{{$que->client_detail->id}}" class="{{$que->status == 'active' ? 'text-success' : 'text-warning'}}">
-                                                    {{$que->client_detail->last_name}}, {{$que->client_detail->first_name}}   
-                                                </a> 
+                                                {{$counter->counter_name}}  
                                             </td>  
-                                            <td>{{$que->destination_detail->destination_name}}</td>
-                                            <td>{{$que->destination_detail->counter_details->counter_name}}</td>
-                                            <td>{{$que->priority}}</td>
-                                            <td id="que_status_{{$que->id}}">
-                                                @if($que->status == 'waiting')   
-                                                <span class="badge badge-light-warning">
-                                                {{$que->status}}
-                                                </span>
-                                                @elseif($que->status == 'done')
+                                            <td id="counter_status_{{$counter->id}}">
+                                                @if($counter->status == 'active')   
                                                 <span class="badge badge-light-success">
-                                                {{$que->status}}
+                                                {{$counter->status}}
+                                                </span>
+                                                @elseif($counter->status == 'inactive')
+                                                <span class="badge badge-light-warning">
+                                                {{$counter->status}}
                                                 </span>
                                                 @else
-                                                <span class="badge badge-light-danger">
-                                                {{$que->status}}
-                                                </span>
                                                 @endif
                                             </td>
-
-                                            <!-- <td class="action">
-                                                <a href="/panel/ques/{{$que->id}}" class="btn btn-icon btn-active-light-success">
+                                            <td class="action">
+                                                <a href="/panel/clerk/counter/{{$counter->id}}" class="btn btn-icon btn-active-light-success">
+                                                    <!--begin::Svg Icon | path: assets/media/icons/duotune/finance/fin003.svg-->
                                                     <span class="svg-icon svg-icon-muted svg-icon-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                     <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="currentColor"/>
                                                     <path opacity="0.3" d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z" fill="currentColor"/>
                                                     </svg>
                                                     </span>
+                                                    <!--end::Svg Icon-->
                                                 </a>
-                                            </td> -->
+                                            </td>
                                         </tr>
+                                        <?php 
+                                            $count += 1; 
+                                        ?>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -87,7 +81,6 @@
     <!--end::Entry-->
 </div>
 
-<script src="{{asset('js/app.js')}}"></script>  
-<script src="{{asset('assets/js/ques.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script> 
 
 @endsection

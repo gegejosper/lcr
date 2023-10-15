@@ -9,10 +9,12 @@
                         <div class="card-body">
                             <h2>{{$counter->counter_name}}</h2>
                             @if(isset($counter->serving_que))
-                            @foreach($counter->serving_que as $que)
+                            @forelse($counter->serving_que as $que)
                             <h3>Serving</h3>
                             <h1 class="text-danger" style="font-size:120px;" id="counter_{{$counter->id}}">{{$que->priority_number}}</h1>
-                            @endforeach
+                            @empty
+                            <h1 class="text-danger" style="font-size:80px;">...</h1>
+                            @endforelse
                             @endif
                         </div>
                     </div>

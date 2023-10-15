@@ -76,11 +76,6 @@ class FrontController extends Controller
         }
 
     }
-    public function view_counter($counter_id){
-        $counter = Counter::find($counter_id);
-        $serving = Que::where('counter_id', $counter_id)->with('client_detail', 'destination_detail.counter_details')->where('status', 'serving')->first();
-        $ques = Que::with('client_detail', 'destination_detail.counter_details')->where('counter_id', $counter_id)->get();
-        return view('panel.counters.counter', compact('ques', 'counter', 'serving'));
-    }
+    
 }
 

@@ -18,24 +18,19 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', 'FrontController@index');
 Route::get('/unknown_user', 'FrontController@unknown_user');
-Route::get('/counter/{counter_id}', 'FrontController@view_counter');
-Route::get('/serve/{counter_id}', 'QueController@serve');
-Route::get('/next/{counter_id}', 'QueController@next');
-Route::get('/skip/{counter_id}', 'QueController@skip');
-Route::get('/end/{counter_id}', 'QueController@end');
-Route::get('/check_que', 'QueController@check_que');
+
+Route::get('/check_que', 'Panel/QueController@check_que');
 Route::get('/apply', 'FrontController@apply');
 Route::get('/thankyou/{client_id}', 'FrontController@thank_you');
 Route::post('/client/register', 'FrontController@register');
-Route::prefix('panel/ques')->middleware('can:manage-admin')->name('ques.')->group(function() {
-    Route::get('/', 'QueController@ques')->name('ques');
-});
+
 Route::namespace('Panel')->prefix('panel')->name('panel.')->group(function() {
     Route::middleware('can:manage-admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/', 'AdminController@dashboard')->name('dashboard');
 
         Route::get('/settings', 'AdminController@settings')->name('settings');     
-        Route::get('/reports', 'AdminController@reports')->name('reports');     
+        Route::get('/reports', 'AdminController@reports')->name('reports'); 
+        Route::post('/reports/range', 'AdminController@reports_range')->name('reports_range');     
         Route::get('/settings/roles', 'AdminController@roles')->name('roles');  
         Route::get('/settings/backup', 'AdminController@backup')->name('backup');        
         Route::get('/settings/backup/users', 'BackupController@backup_users')->name('backup_users');        
@@ -54,7 +49,9 @@ Route::namespace('Panel')->prefix('panel')->name('panel.')->group(function() {
         Route::post('/edit', 'DestinationController@edit_destination')->name('edit_destination');
         Route::post('/modify', 'DestinationController@modify_destination')->name('modify_destination'); 
     });
-   
+    Route::prefix('ques')->middleware('can:manage-admin')->name('ques.')->group(function() {
+        Route::get('/', 'QueController@ques')->name('ques');
+    });
     Route::prefix('counters')->middleware('can:manage-admin')->name('counters.')->group(function() {
         Route::get('/', 'CounterController@show_counters')->name('show_counters');
         Route::get('/{counter_id}', 'CounterController@view_counter')->name('view_counter');
@@ -70,6 +67,14 @@ Route::namespace('Panel')->prefix('panel')->name('panel.')->group(function() {
         Route::post('/search', 'ClientController@search_clients')->name('search_clients');
         Route::post('/modify', 'ClientController@modify_client')->name('modify_client'); 
     });  
+    Route::prefix('clerk')->middleware('can:manage-clerk')->name('clerk.')->group(function() {
+        Route::get('/', 'ClerkController@index')->name('ques');
+        Route::get('/counter/{counter_id}', 'QueController@view_counter');
+        Route::get('/serve/{counter_id}', 'QueController@serve');
+        Route::get('/next/{counter_id}', 'QueController@next');
+        Route::get('/skip/{counter_id}', 'QueController@skip');
+        Route::get('/end/{counter_id}', 'QueController@end');
+    });
 });
 
 

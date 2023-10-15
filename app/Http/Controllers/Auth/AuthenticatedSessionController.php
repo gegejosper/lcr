@@ -37,6 +37,10 @@ class AuthenticatedSessionController extends Controller
             $redirect_to = '/panel/admin';
             return redirect($redirect_to);
         }
+        if(Auth::user()->hasRole(['clerk'])){
+            $redirect_to = '/panel/clerk';
+            return redirect($redirect_to);
+        }
         else{
             $redirect_to = '/';
             return redirect($redirect_to);

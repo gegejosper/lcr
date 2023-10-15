@@ -1,97 +1,106 @@
-@extends('layouts.front')
-@section('front-content')
-		<div class="row ">
-            <div class="col bg-white me-5">
-                <!--begin::Heading-->
-                <div class="text-center">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2>{{$counter->counter_name}}</h2>
-                            @if(isset($serving))
-                            <h3>Serving: {{$serving->priority_number}}</h3>
-                            @endif
-                            <div class="card card-custom">
-                            <div class="card-body"> 
-                                <!--begin: Datatable-->                             
-                                <table class="table" id="queTable">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Priority #</th>
-                                            <th scope="col">Client</th>
-                                            <th scope="col">Destination</th>
-                                            <th scope="col">Status</th>
-                                            <!-- <th scope="col">Action</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($ques as $que)
-                                        <tr class="row{{$que->id}}">
-                                            <td>{{$que->que_date}}</td>
-                                            <td>{{$que->priority_number}}</td>
-                                           
-                                            <td>
-                                                <a href="/panel/clients/{{$que->client_detail->id}}" id="client_name_{{$que->client_detail->id}}" class="{{$que->status == 'active' ? 'text-success' : 'text-warning'}}">
-                                                    {{$que->client_detail->last_name}}, {{$que->client_detail->first_name}}   
-                                                </a> 
-                                            </td>  
-                                            <td>{{$que->destination_detail->destination_name}}</td>
-                                            <td id="que_status_{{$que->id}}">
-                                                @if($que->status == 'waiting')   
-                                                <span class="badge badge-light-warning">
-                                                {{$que->status}}
-                                                </span>
-                                                @elseif($que->status == 'serving')
-                                                <span class="badge badge-light-success">
-                                                {{$que->status}}
-                                                </span>
-                                                @elseif($que->status == 'skipped')
-                                                <span class="badge badge-light-primary">
-                                                {{$que->status}}
-                                                </span>
-                                                @elseif($que->status == 'done')
-                                                <span class="badge badge-light-danger">
-                                                {{$que->status}}
-                                                </span>
-                                                @else
-                                                @endif
-                                            </td>
+@extends('layouts.panel')
 
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="row">
-                                    <div class="col">
-                                        <a href="javascript:;" data-redirect_url="/serve/{{$counter->id}}" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-success play_next_sound">Serve</a>
-                                        <a href="javascript:;" data-redirect_url="/next/{{$counter->id}}" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-primary play_next_sound">Next</a>
-                                        <a href="javascript:;" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-primary" id="ring_bell"><i class="fa fa-bell"></i></a>
-                                        <a href="javascript:;"  data-redirect_url="/skip/{{$counter->id}}"data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-warning play_next_sound">Skip</a>
-                                        <a href="javascript:;"  data-redirect_url="/end/{{$counter->id}}" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-danger play_next_sound">End</a>
+@section('content')
+ 
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Row-->
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center ">
+                    <h1 id="digital_clock" class="text-dark" style="font-size:100px;"></h1>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>{{$counter->counter_name}}</h2>
+                                @if(isset($serving))
+                                <h3>Serving: {{$serving->priority_number}}</h3>
+                                @endif
+                                <div class="card card-custom">
+                                <div class="card-body"> 
+                                    <!--begin: Datatable-->                             
+                                    <table class="table table-striped table-row-dashed" id="queTable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Priority #</th>
+                                                <th scope="col">Client</th>
+                                                <th scope="col">Destination</th>
+                                                <th scope="col">Priority</th>
+                                                <th scope="col">Status</th>
+                                                <!-- <th scope="col">Action</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse($ques as $que)
+                                            <tr class="row{{$que->id}}">
+                                                <td>{{$que->que_date}}</td>
+                                                <td>{{$que->priority_number}}</td>
+                                                
+                                                <td>
+                                                    <a href="/panel/clients/{{$que->client_detail->id}}" id="client_name_{{$que->client_detail->id}}" class="{{$que->status == 'active' ? 'text-success' : 'text-warning'}}">
+                                                        {{$que->client_detail->last_name}}, {{$que->client_detail->first_name}}   
+                                                    </a> 
+                                                </td>  
+                                                <td>{{$que->destination_detail->destination_name}}</td>
+                                                <td>{{$que->priority}}</td>
+                                                <td id="que_status_{{$que->id}}">
+                                                    @if($que->status == 'waiting')   
+                                                    <span class="badge badge-light-warning">
+                                                    {{$que->status}}
+                                                    </span>
+                                                    @elseif($que->status == 'serving')
+                                                    <span class="badge badge-light-success">
+                                                    {{$que->status}}
+                                                    </span>
+                                                    @elseif($que->status == 'skipped')
+                                                    <span class="badge badge-light-primary">
+                                                    {{$que->status}}
+                                                    </span>
+                                                    @elseif($que->status == 'done')
+                                                    <span class="badge badge-light-danger">
+                                                    {{$que->status}}
+                                                    </span>
+                                                    @else
+                                                    @endif
+                                                </td>
+
+                                            </tr>
+                                            @empty
+                                            <tr class="text-center">
+                                                <td colspan="5" class="text-center">
+                                                    <em class="text-danger">No Current Ques...</em>
+                                                </td>
+                                            </td>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col">
+                                            @if($serving == null)
+                                            <a href="javascript:;" data-redirect_url="/panel/clerk/serve/{{$counter->id}}" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-success play_next_sound">Serve</a>
+                                            @endif
+                                            <a href="javascript:;" data-redirect_url="/panel/clerk/next/{{$counter->id}}" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-primary play_next_sound">Next</a>
+                                            <a href="javascript:;" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-primary" id="ring_bell"><i class="fa fa-bell"></i></a>
+                                            <a href="javascript:;"  data-redirect_url="/panel/clerk/skip/{{$counter->id}}"data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-warning play_next_sound">Skip</a>
+                                            <a href="javascript:;"  data-redirect_url="/panel/clerk/end/{{$counter->id}}" data-src="{{asset('assets/sounds/doorbell.wav')}}" class="btn btn-danger play_next_sound">End</a>
+                                        </div>
                                     </div>
+                                    <!--end: Datatable-->
                                 </div>
-                                <!--end: Datatable-->
                             </div>
                         </div>
-                        </div>
                     </div>
-					<!--end::Title-->
-				</div>
-            </div>
-			<!--end::Form-->
-		</div>
-		<!--end::Wrapper-->
-	</div>
-	<!--end::Content-->
-	<!--begin::Footer-->
-	<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
-		<!--begin::Links-->
-		<div class="d-flex flex-center fw-bold fs-6">
-			<a href="#" class="text-muted text-hover-primary px-2" target="_blank">2023 @ LSSTI - BSCS IV</a>
-		</div>
-		<!--end::Links-->
-	</div>
-	<!--end::Footer-->
+                </div>
+            <!--end::Row-->
+            
+            <!--end::Dashboard-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
 </div>
 <audio id="next_sound" src="{{asset('assets/sounds/doorbell.wav')}}"></audio>
 <audio id="audioElement"></audio>
@@ -147,4 +156,6 @@ function updateDigitalClock() {
         updateDigitalClock();
 
 </script>
+<script src="{{asset('js/app.js')}}"></script> 
+
 @endsection
