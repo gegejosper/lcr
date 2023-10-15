@@ -2,7 +2,7 @@
 @section('front-content')
 		<div class="row ">
 			@foreach($counters as $counter)
-            <div class="col bg-white me-5">
+            <div class="col-lg-4 bg-white me-5">
                 <!--begin::Heading-->
                 <div class="text-center">
                     <div class="card">
@@ -11,9 +11,9 @@
                             @if(isset($counter->serving_que))
                             @forelse($counter->serving_que as $que)
                             <h3>Serving</h3>
-                            <h1 class="text-danger" style="font-size:120px;" id="counter_{{$counter->id}}">{{$que->priority_number}}</h1>
+                            <h1 class="text-danger" style="font-size:80px;" id="counter_{{$counter->id}}">{{$que->priority_number}}</h1>
                             @empty
-                            <h1 class="text-danger" style="font-size:80px;">...</h1>
+                            <h1 class="text-danger" style="font-size:80px;" id="counter_{{$counter->id}}">...</h1>
                             @endforelse
                             @endif
                         </div>
@@ -22,7 +22,11 @@
 				</div>
             </div>
             @endforeach
-				
+            <div class="row">
+                <div class="col mt-20">
+                    <a href="/register" class="btn btn-primary btn-lg"> Register</a>
+                </div>
+            </div>
 			<!--end::Form-->
 		</div>
 		<!--end::Wrapper-->

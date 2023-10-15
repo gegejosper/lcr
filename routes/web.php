@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'FrontController@index');
 Route::get('/unknown_user', 'FrontController@unknown_user');
 
-Route::get('/check_que', 'Panel/QueController@check_que');
+Route::get('/check_que', 'Panel\QueController@check_que');
 Route::get('/apply', 'FrontController@apply');
 Route::get('/thankyou/{client_id}', 'FrontController@thank_you');
 Route::post('/client/register', 'FrontController@register');

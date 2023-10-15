@@ -57,6 +57,9 @@
 	<!--end::Footer-->
 </div>
 <script>
+    window.onload = function () {
+        window.print();
+    }
     document.addEventListener('DOMContentLoaded', function() {
     var print_button = document.getElementById('print_button');
     
@@ -70,7 +73,7 @@ function redirect_after_10_seconds() {
 
     function updateCountdown() {
         if (seconds > 0) {
-            document.getElementById('countdown').textContent = 'Redirecting in ' seconds + ' seconds';
+            document.getElementById('countdown').textContent = 'Redirecting in ' + seconds + ' seconds';
             seconds--;
             setTimeout(updateCountdown, 1000); // Update every 1 second
         } else {
