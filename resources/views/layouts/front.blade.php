@@ -23,7 +23,7 @@
 					<div class="d-flex flex-column flex-column-fluid">
 						<!--begin::Wrapper-->
 						<a href="/" class="mb-5 align-center">
-							<img alt="Logo" src="{{asset(config('app.logo'))}}" class="h-50px" />
+							<img alt="Logo" src="{{asset(config('app.logo'))}}" class="h-150px" />
 						</a>
 						<h1 id="digital_clock" class="text-white" style="font-size:100px;"></h1>
 				

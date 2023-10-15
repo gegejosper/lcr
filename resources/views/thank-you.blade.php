@@ -9,6 +9,8 @@
 				<div class="text-center">
                     <h3 class="text-dark mb-3">{{$que->destination_detail->counter_details->counter_name}}</h3>
                     <h1 class="text-danger mb-3 fs-1">{{$que->priority_number}}</h1>
+                    <h4>Date: {{$que->created_at->format('Y-m-d')}}</h4> 
+                    <h4>Time: {{$que->created_at->format('H:i:s')}}</h4>  
                     <div class="card">
                         <div class="card-body">
                         <div id="kt_customer_view_details" class="collapse show">
