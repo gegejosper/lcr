@@ -19,11 +19,11 @@
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
 				<div class="d-flex flex-column flex-lg-row-fluid py-5 text-center">
 					<!--begin::Content-->
-					<h1 class="text-white " style="font-size:50px;">LOCAL CIVIL REGISTRAR QUEUING SYSTEM</h1>
+					<h1 class="text-white " style="font-size:12px;">LOCAL CIVIL REGISTRAR QUEUING SYSTEM</h1>
 					<div class="d-flex flex-column flex-column-fluid">
 						<!--begin::Wrapper-->
 						<a href="/" class="mb-5 align-center">
-							<img alt="Logo" src="{{asset(config('app.logo'))}}" class="h-150px" />
+							<img alt="Logo" src="{{asset(config('app.logo'))}}" class="h-50px" />
 						</a>
 						<h1 id="digital_clock" class="text-white" style="font-size:100px;"></h1>
 				

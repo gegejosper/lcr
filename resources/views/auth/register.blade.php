@@ -32,7 +32,7 @@
                         <input class="form-control form-control-lg form-control-solid" placeholder="First Name" type="text" name="first_name" required/>
                     </div>
                     <div class="col col-lg-4">
-                        <input class="form-control form-control-lg form-control-solid" placeholder="Middle Name"  type="text" name="middle_name" />
+                        <input class="form-control form-control-lg form-control-solid" placeholder="Middle Name"  type="text" name="middle_name"/>
                     </div>
                     <div class="col col-lg-4">
                         <input class="form-control form-control-lg form-control-solid" placeholder="Last Name"  type="text" name="last_name" required/>

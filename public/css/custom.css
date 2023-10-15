@@ -107,3 +107,12 @@ a:hover {
 .text-hover-primary:hover {
     color: var(--third-color) !important;
 }
+
+@media print {
+    .no-print {
+        display:none;
+    }
+    .report-forms {
+      font-size:12pt;
+    }
+ }

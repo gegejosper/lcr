@@ -2,7 +2,7 @@
 @section('front-content')
 		<div class="row">
 			@foreach($counters as $counter)
-            <div class="col-lg-4 bg-white">
+            <div class="col-lg-4 bg-white mt-10">
                 <!--begin::Heading-->
                 <div class="text-center">
                     <div class="card">

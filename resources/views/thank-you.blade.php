@@ -4,7 +4,7 @@
 	<!--begin::Content-->
 	<div class="d-flex flex-center flex-column flex-column-fluid">
 		<!--begin::Wrapper-->
-		<div class="bg-body w-lg-700px p-10 p-lg-15 mx-auto d-flex flex-center flex-column">
+		<div class="bg-body w-lg-700px mx-auto d-flex flex-center flex-column">
 				<!--begin::Heading-->
 				<div class="text-center">
                     <h3 class="text-dark mb-3">{{$que->destination_detail->counter_details->counter_name}}</h3>
@@ -31,10 +31,10 @@
                                     <div class="fw-bolder mt-5">Purpose</div>
                                     <div class="text-gray-600">{{$que->destination_detail->destination_name}}</div>
                                     <!--begin::Details item-->
-                                    <button class="btn btn-xl btn-success mt-10" id="print_button"><i class="fa fa-print"></i> Print</button>
-                                    <a href="/" class="btn btn-xl btn-primary mt-10"><i class="fa fa-reply"></i> Back</a>
+                                    <button class="btn btn-xl btn-success mt-10 no-print" id="print_button"><i class="fa fa-print"></i> Print</button>
+                                    <a href="/" class="btn btn-xl btn-primary mt-10 no-print"><i class="fa fa-reply"></i> Back</a>
 
-                                    <div id="countdown">10 seconds remaining</div>
+                                    <div id="countdown" class="no-print">10 seconds remaining</div>
                                 </div>
                             </div>
                         </div>
