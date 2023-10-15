@@ -1,8 +1,8 @@
 @extends('layouts.front')
 @section('front-content')
-		<div class="row ">
+		<div class="row">
 			@foreach($counters as $counter)
-            <div class="col-lg-4 bg-white me-5">
+            <div class="col-lg-4 bg-white">
                 <!--begin::Heading-->
                 <div class="text-center">
                     <div class="card">
