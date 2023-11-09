@@ -8,7 +8,7 @@
 				<!--begin::Heading-->
 				<div class="text-center">
                     <h3 class="text-dark mb-3">{{$que->destination_detail->counter_details->counter_name}}</h3>
-                    <h1 class="text-danger mb-3 fs-1">{{$que->priority_number}}</h1>
+                    <h1 class="text-dark mb-3 fs-1">{{$que->priority_number}}</h1>
                     <h4>Date: {{$que->created_at->format('Y-m-d')}}</h4> 
                     <h4>Time: {{$que->created_at->format('H:i:s')}}</h4>  
                     <div class="card">
@@ -16,22 +16,22 @@
                         <div id="kt_customer_view_details" class="collapse show">
                                 <div class="py-5 fs-6">
                                     <!--begin::Badge-->
-                                    <div class="badge badge-light-info d-inline">Client Details</div>
+                                    <div class="badge badge-dark d-inline">Client Details</div>
                                     <!--begin::Badge-->
                                     <!--begin::Details item-->
                                     <div class="fw-bolder mt-5">Name</div>
-                                    <div class="text-gray-600">{{$que->client_detail->last_name}}, {{$que->client_detail->first_name}} {{$que->client_detail->middle_name}}</div>
+                                    <div class="fw-bolder fs-3">{{$que->client_detail->last_name}}, {{$que->client_detail->first_name}} {{$que->client_detail->middle_name}}</div>
                                     <!--begin::Details item-->
                                     <!--begin::Details item-->
                                     <div class="fw-bolder mt-5">Address</div>
-                                    <div class="text-gray-600">{{$que->client_detail->address}}</div>
+                                    <div class="fw-bolder fs-3">{{$que->client_detail->address}}</div>
                                     <!--begin::Details item-->
                                     <!--begin::Details item-->
                                     <div class="fw-bolder mt-5">Mobile Number</div>
-                                    <div class="text-gray-600">{{$que->client_detail->mobile_num}}</div>
+                                    <div class="fw-bolder fs-3">{{$que->client_detail->mobile_num}}</div>
 
                                     <div class="fw-bolder mt-5">Purpose</div>
-                                    <div class="text-gray-600">{{$que->destination_detail->destination_name}}</div>
+                                    <div class="fw-bolder fs-3">{{$que->destination_detail->destination_name}}</div>
                                     <!--begin::Details item-->
                                     <button class="btn btn-xl btn-success mt-10 no-print" id="print_button"><i class="fa fa-print"></i> Print</button>
                                     <a href="/" class="btn btn-xl btn-primary mt-10 no-print"><i class="fa fa-reply"></i> Back</a>
