@@ -10,7 +10,7 @@
             <!--begin::Row-->
                 <div class="row justify-content-center">
                     
-                    <div class="col-lg-12">
+                    <div class="col-lg-8">
                         <!--begin::Card-->
                         <div class="card">
                             
@@ -28,9 +28,9 @@
                                                     <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_clients_table" rowspan="1" colspan="1" aria-label="Client Name: activate to sort column ascending" style="width: 171.9375px;">Client Name</th>
                                                     
                                                     <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_clients_table" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 225.21875px;">Contact Number</th>
-                                                    <th class="min-w-325px sorting" tabindex="0" aria-controls="kt_clients_table" rowspan="1" colspan="1" aria-label="Client Name: activate to sort column ascending" style="width: 171.9375px;">Address</th>
-                                                    <th class="max-w-50px" tabindex="0">Status</th>
-                                                    <th class="text-end min-w-150px" rowspan="1" colspan="1" aria-label="Actions" style="width: 132.984375px;">Actions</th></tr>
+                                                    <th class="sorting" tabindex="0" aria-controls="kt_clients_table" rowspan="1" colspan="1" aria-label="Client Name: activate to sort column ascending" style="width: 171.9375px;">Address</th>
+                                                    <!-- <th class="max-w-50px" tabindex="0">Status</th> -->
+                                                    <!-- <th class="text-end min-w-150px" rowspan="1" colspan="1" aria-label="Actions" style="width: 132.984375px;">Actions</th></tr> -->
                                                 <!--end::Table row-->
                                             </thead>
                                             <!--end::Table head-->
@@ -61,10 +61,10 @@
                                                             $classAdd = 'badge-light-danger';
                                                         }
                                                     ?>
-                                                    <td >
+                                                    <!-- <td >
                                                         <span id="client_status_{{$client->id}}" class="badge {{$classAdd}}">{{$client->status}}</span>
-                                                    </td>
-                                                    <td class="text-end">
+                                                    </td> -->
+                                                    <!-- <td class="text-end">
                                                         <a href="javascript:;" id="client_edit_{{$client->id}}" class="btn btn-icon btn-active-light-info edit-client"
                                                             data-client_id="{{$client->id}}"
                                                             data-client_last_name="{{$client->last_name}}"
@@ -81,14 +81,12 @@
                                                             </span>
                                                         </a>
                                                         <a href="/panel/clients/{{$client->id}}" class="btn btn-icon btn-active-light-success">
-                                                            <!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen021.svg-->
                                                             <span class="svg-icon svg-icon-muted svg-icon-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                             <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"/>
                                                             <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"/>
                                                             </svg></span>
-                                                            <!--end::Svg Icon-->
                                                         </a>
-                                                    </td>
+                                                    </td> -->
                                                 </tr>
                                                 @endforeach
                                             </tbody>
