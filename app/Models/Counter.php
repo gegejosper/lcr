@@ -11,4 +11,7 @@ class Counter extends Model
     public function serving_que(){
         return $this->hasMany('App\Models\Que','counter_id', 'id')->where('status', 'serving');
     }
+    public function waiting_que(){
+        return $this->hasMany('App\Models\Que','counter_id', 'id')->where('status', 'waiting');
+    }
 }

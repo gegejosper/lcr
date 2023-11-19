@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Application;
 use App\Models\Destination;
-
+use App\Models\Counter;
 use App\Models\User;
 use App\Models\Que;
 use App\Models\Role;
@@ -23,8 +23,8 @@ class AdminController extends Controller
     //
     public function dashboard(){
         $page_name = 'Dashboard';
-
-        return view('panel.admin.dashboard',compact('page_name'));
+        $counters = Counter::with('waiting_que')->where('status', 'active')->get();
+        return view('panel.admin.dashboard',compact('page_name', 'counters'));
     }
     
     
